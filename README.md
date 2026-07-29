@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/meenusai838-cyber/HMS/actions/workflows/ci.yml/badge.svg)](https://github.com/meenusai838-cyber/HMS/actions/workflows/ci.yml)
 [![Open Issues](https://img.shields.io/github/issues/meenusai838-cyber/HMS)](https://github.com/meenusai838-cyber/HMS/issues)
+[![Open Pull Requests](https://img.shields.io/github/issues-pr/meenusai838-cyber/HMS)](https://github.com/meenusai838-cyber/HMS/pulls)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 A full-stack hospital management system built with Next.js (App Router), Prisma, PostgreSQL, and NextAuth. It covers the day-to-day workflow of a small hospital across eight role-based portals: patient, front desk, doctor, nurse, lab, pharmacy, billing, and admin.
