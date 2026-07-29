@@ -6,16 +6,32 @@ Thanks for considering a contribution to HMS. This is a small project, so the pr
 
 Follow the [README](./README.md#getting-started) to get a local instance running against Docker Postgres with seeded demo data before making changes.
 
+## Badges
+
+The badges at the top of the [README](./README.md) are all live and mean:
+
+| Badge | What it shows |
+| --- | --- |
+| CI | Pass/fail of the [`ci.yml`](./.github/workflows/ci.yml) workflow's most recent run on `master` — lint, typecheck, tests, and a full build against a real Postgres database. |
+| Open Issues | Current count of open issues. |
+| Open Pull Requests | Current count of open PRs. |
+| Stars / Forks | GitHub's live star/fork counts for the repo. |
+| Top Language | GitHub's language-detection badge (dominant language by bytes, i.e. TypeScript). |
+| License | Links to [`LICENSE`](./LICENSE) (MIT). |
+
+There's currently no coverage badge — Codecov isn't connected yet (see the CI workflow's `codecov-action` step, which no-ops without a token). Feel free to wire it up (see [Codecov](https://app.codecov.io)) if you want to pursue that.
+
 ## Before opening a PR
 
-There's no CI configured yet, so please run these locally and make sure they're clean:
+CI (`.github/workflows/ci.yml`) runs lint, typecheck, and tests on every push/PR to `master`, plus a full build against a real Postgres database. Run the same checks locally before pushing:
 
 ```bash
 npx tsc --noEmit
 npm run lint
+npm test
 ```
 
-There's no automated test suite. If you're changing behavior in `src/lib/*`, manually exercise the affected flow through the UI (or a throwaway script) with the seeded demo accounts before submitting.
+If you're changing behavior in `src/lib/*`, add or update a test in the corresponding `*.test.ts` file where practical (see the existing `roles.test.ts`, `validation.test.ts`, and `billing.test.ts` for the pattern — pure logic only, no live database in tests yet). For anything that does need a database, manually exercise the affected flow through the UI with the seeded demo accounts before submitting.
 
 ## Code conventions
 
