@@ -1,7 +1,6 @@
 # HMS — Hospital Management System
 
 [![CI](https://github.com/meenusai838-cyber/HMS/actions/workflows/ci.yml/badge.svg)](https://github.com/meenusai838-cyber/HMS/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/meenusai838-cyber/HMS/graph/badge.svg)](https://codecov.io/gh/meenusai838-cyber/HMS)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 A full-stack hospital management system built with Next.js (App Router), Prisma, PostgreSQL, and NextAuth. It covers the day-to-day workflow of a small hospital across eight role-based portals: patient, front desk, doctor, nurse, lab, pharmacy, billing, and admin.
