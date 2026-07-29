@@ -3,7 +3,7 @@ import { requireRole } from "@/lib/dal";
 import { prisma } from "@/lib/prisma";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { FRONT_DESK_NAV } from "@/app/_nav";
@@ -45,8 +45,12 @@ export default async function FrontDeskPage() {
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">Front desk</h1>
           <div className="flex gap-2">
-            <Button variant="outline" render={<Link href="/front-desk/patients">Find patient</Link>} />
-            <Button render={<Link href="/front-desk/patients/new">Register walk-in</Link>} />
+            <Link href="/front-desk/patients" className={buttonVariants({ variant: "outline" })}>
+              Find patient
+            </Link>
+            <Link href="/front-desk/patients/new" className={buttonVariants()}>
+              Register walk-in
+            </Link>
           </div>
         </div>
 

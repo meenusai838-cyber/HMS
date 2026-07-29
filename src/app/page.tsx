@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -9,8 +9,10 @@ export default function Home() {
         <p className="text-muted-foreground">Sign in to your role-specific dashboard.</p>
       </div>
       <div className="flex gap-3">
-        <Button render={<Link href="/login">Sign in</Link>} />
-        <Button variant="outline" render={<Link href="/register">Register as a patient</Link>} />
+        <Link href="/login" className={buttonVariants()}>Sign in</Link>
+        <Link href="/register" className={buttonVariants({ variant: "outline" })}>
+          Register as a patient
+        </Link>
       </div>
     </div>
   );

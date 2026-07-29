@@ -3,7 +3,7 @@ import { requireRole } from "@/lib/dal";
 import { prisma } from "@/lib/prisma";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { PATIENT_NAV } from "@/app/_nav";
@@ -27,7 +27,9 @@ export default async function PatientAppointmentsPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">My appointments</h1>
-          <Button render={<Link href="/patient/book">Book new</Link>} />
+          <Link href="/patient/book" className={buttonVariants()}>
+            Book new
+          </Link>
         </div>
 
         <Card>

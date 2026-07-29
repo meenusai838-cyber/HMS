@@ -3,7 +3,7 @@ import { requireRole } from "@/lib/dal";
 import { getPendingLabOrders } from "@/lib/lab";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { LAB_NAV } from "@/app/_nav";
 import { collectSampleAction, startProcessingAction } from "./actions";
@@ -53,7 +53,9 @@ export default async function LabPage() {
                     </form>
                   )}
                   {o.status === "IN_PROGRESS" && (
-                    <Button size="sm" render={<Link href={`/lab/orders/${o.id}`}>Enter results</Link>} />
+                    <Link href={`/lab/orders/${o.id}`} className={buttonVariants({ size: "sm" })}>
+                      Enter results
+                    </Link>
                   )}
                 </div>
               </div>

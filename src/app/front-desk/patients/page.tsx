@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { FRONT_DESK_NAV } from "@/app/_nav";
 
@@ -36,7 +36,9 @@ export default async function FrontDeskPatientsPage(props: {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">Patients</h1>
-          <Button render={<Link href="/front-desk/patients/new">Register walk-in</Link>} />
+          <Link href="/front-desk/patients/new" className={buttonVariants()}>
+            Register walk-in
+          </Link>
         </div>
 
         <Card>

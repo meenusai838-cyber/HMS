@@ -4,7 +4,7 @@ import { getUnbilledConsultations, getUnbilledAdmissions, getOpenBills } from "@
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BILLING_NAV } from "@/app/_nav";
 import { generateBillFromConsultationAction, generateBillFromAdmissionAction } from "./actions";
@@ -147,7 +147,9 @@ export default async function BillingPage() {
                       </Badge>
                     </TableCell>
                     <TableCell>
-                      <Button size="sm" variant="outline" render={<Link href={`/billing/bills/${bill.id}`}>View</Link>} />
+                      <Link href={`/billing/bills/${bill.id}`} className={buttonVariants({ size: "sm", variant: "outline" })}>
+                        View
+                      </Link>
                     </TableCell>
                   </TableRow>
                 ))}

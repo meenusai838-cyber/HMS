@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { getSlotsForDoctorOnDate } from "@/lib/appointments";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { FRONT_DESK_NAV } from "@/app/_nav";
 import { SlotPicker } from "./slot-picker";
@@ -30,7 +30,9 @@ export default async function FrontDeskBookPage(props: {
             <CardDescription>Find a patient first, then book from their profile.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Button render={<Link href="/front-desk/patients">Find patient</Link>} />
+            <Link href="/front-desk/patients" className={buttonVariants()}>
+              Find patient
+            </Link>
           </CardContent>
         </Card>
       </RoleShell>

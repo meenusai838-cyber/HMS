@@ -6,7 +6,7 @@ import { startConsultation } from "@/lib/queue";
 import { getLabOrdersForConsultation } from "@/lib/lab";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -74,7 +74,12 @@ export default async function ConsultationPage(props: { params: Promise<{ appoin
               {appointment.tokenNumber && <> &middot; Token #{appointment.tokenNumber}</>}
             </p>
           </div>
-          <Button render={<Link href={`/doctor/patients/${appointment.patientId}`}>Full patient record</Link>} variant="outline" />
+          <Link
+            href={`/doctor/patients/${appointment.patientId}`}
+            className={buttonVariants({ variant: "outline" })}
+          >
+            Full patient record
+          </Link>
         </div>
 
         <Card className="border-amber-300 dark:border-amber-900">

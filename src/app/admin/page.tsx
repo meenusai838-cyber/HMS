@@ -5,7 +5,7 @@ import { getBedOccupancyStats } from "@/lib/ward";
 import { getStockOverview } from "@/lib/pharmacy";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ROLE_LABEL, ROLES } from "@/lib/roles";
 
 function startOfDay(date: Date) {
@@ -56,7 +56,9 @@ export default async function AdminPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">Admin dashboard</h1>
-          <Button render={<Link href="/admin/staff/new">Add staff account</Link>} />
+          <Link href="/admin/staff/new" className={buttonVariants()}>
+            Add staff account
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">

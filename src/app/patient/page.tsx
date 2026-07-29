@@ -6,7 +6,7 @@ import { getPatientVisitHistory } from "@/lib/consultations";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { VisitHistory } from "@/components/visit-history";
 import { PATIENT_NAV } from "@/app/_nav";
 
@@ -54,7 +54,9 @@ export default async function PatientHomePage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">Welcome, {patient.name}</h1>
-          <Button render={<Link href="/patient/book">Book appointment</Link>} />
+          <Link href="/patient/book" className={buttonVariants()}>
+            Book appointment
+          </Link>
         </div>
 
         {checkedInToday && (

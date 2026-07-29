@@ -6,7 +6,7 @@ import { resolvePatientId } from "@/lib/patients";
 import { getPatientVisitHistory } from "@/lib/consultations";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { VisitHistory } from "@/components/visit-history";
@@ -57,7 +57,12 @@ export default async function PatientDetailPage(props: { params: Promise<{ id: s
               MRN {patient.mrn} &middot; DOB {patient.dob.toISOString().slice(0, 10)} &middot; {patient.gender}
             </p>
           </div>
-          <Button render={<Link href={`/front-desk/book?patientId=${patient.id}`}>Book appointment</Link>} />
+          <Link
+            href={`/front-desk/book?patientId=${patient.id}`}
+            className={buttonVariants()}
+          >
+            Book appointment
+          </Link>
         </div>
 
         {patient.mergedFrom.length > 0 && (
