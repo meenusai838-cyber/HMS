@@ -1,0 +1,9 @@
+# CODEOWNERS
+# https://docs.github.com/articles/about-codeowners
+#
+# These owners will be requested for review when someone opens a pull
+# request that modifies matching files. Later matches take precedence
+# over earlier ones.
+
+# Default owner for everything in the repo, unless a later rule overrides it.
+* @meenusai838-cyber
