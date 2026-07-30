@@ -6,7 +6,10 @@ export const FRONT_DESK_NAV = [
   { href: "/front-desk/patients/merge", label: "Merge duplicates" },
 ];
 
-export const DOCTOR_NAV = [{ href: "/doctor", label: "Today's schedule" }];
+export const DOCTOR_NAV = [
+  { href: "/doctor", label: "Today's schedule" },
+  { href: "/doctor/availability", label: "Availability" },
+];
 
 export const PATIENT_NAV = [
   { href: "/patient", label: "My profile" },

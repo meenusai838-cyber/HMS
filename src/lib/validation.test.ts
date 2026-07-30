@@ -5,6 +5,7 @@ import {
   InsuranceClaimSchema,
   AllergySchema,
   RegisterPatientSchema,
+  AvailabilityBlockSchema,
 } from "./validation";
 
 describe("BillItemSchema", () => {
@@ -104,6 +105,48 @@ describe("RegisterPatientSchema", () => {
       password: "short",
       dob: "1990-01-01",
       gender: "Male",
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+describe("AvailabilityBlockSchema", () => {
+  it("accepts a valid block and coerces numeric strings", () => {
+    const parsed = AvailabilityBlockSchema.parse({
+      dayOfWeek: "1",
+      startTime: "09:00",
+      endTime: "13:00",
+      slotMinutes: "15",
+    });
+    expect(parsed).toMatchObject({ dayOfWeek: 1, slotMinutes: 15 });
+  });
+
+  it("rejects an end time that is not after the start time", () => {
+    const result = AvailabilityBlockSchema.safeParse({
+      dayOfWeek: 1,
+      startTime: "13:00",
+      endTime: "09:00",
+      slotMinutes: 15,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a day of week outside 0-6", () => {
+    const result = AvailabilityBlockSchema.safeParse({
+      dayOfWeek: 7,
+      startTime: "09:00",
+      endTime: "13:00",
+      slotMinutes: 15,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a slot length under 5 minutes", () => {
+    const result = AvailabilityBlockSchema.safeParse({
+      dayOfWeek: 1,
+      startTime: "09:00",
+      endTime: "13:00",
+      slotMinutes: 2,
     });
     expect(result.success).toBe(false);
   });

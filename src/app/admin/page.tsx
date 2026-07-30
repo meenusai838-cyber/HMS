@@ -50,6 +50,7 @@ export default async function AdminPage() {
       userName={session.user.name ?? "Admin"}
       navItems={[
         { href: "/admin", label: "Dashboard" },
+        { href: "/admin/doctors", label: "Doctors" },
         { href: "/admin/staff/new", label: "Add staff" },
       ]}
     >

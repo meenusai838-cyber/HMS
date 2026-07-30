@@ -75,6 +75,51 @@ export class SlotUnavailableError extends Error {
   }
 }
 
+export class AvailabilityOverlapError extends Error {
+  constructor() {
+    super("This overlaps with an existing availability block on that day.");
+    this.name = "AvailabilityOverlapError";
+  }
+}
+
+export async function getDoctorAvailability(doctorId: string) {
+  return prisma.doctorAvailability.findMany({
+    where: { doctorId },
+    orderBy: [{ dayOfWeek: "asc" }, { startTime: "asc" }],
+  });
+}
+
+export async function addAvailabilityBlock(input: {
+  doctorId: string;
+  dayOfWeek: number;
+  startTime: string;
+  endTime: string;
+  slotMinutes: number;
+}) {
+  const existing = await prisma.doctorAvailability.findMany({
+    where: { doctorId: input.doctorId, dayOfWeek: input.dayOfWeek },
+  });
+
+  const overlaps = existing.some(
+    (b) => input.startTime < b.endTime && input.endTime > b.startTime
+  );
+  if (overlaps) throw new AvailabilityOverlapError();
+
+  return prisma.doctorAvailability.create({
+    data: {
+      doctorId: input.doctorId,
+      dayOfWeek: input.dayOfWeek,
+      startTime: input.startTime,
+      endTime: input.endTime,
+      slotMinutes: input.slotMinutes,
+    },
+  });
+}
+
+export async function removeAvailabilityBlock(id: string, doctorId: string) {
+  return prisma.doctorAvailability.deleteMany({ where: { id, doctorId } });
+}
+
 async function assertNoOverlap(
   tx: Prisma.TransactionClient,
   doctorId: string,

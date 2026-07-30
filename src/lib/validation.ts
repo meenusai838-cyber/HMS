@@ -81,3 +81,15 @@ export const ClaimUpdateSchema = z.object({
   approvedAmount: z.coerce.number().min(0).optional(),
   notes: z.string().trim().optional(),
 });
+
+export const AvailabilityBlockSchema = z
+  .object({
+    dayOfWeek: z.coerce.number().int().min(0).max(6),
+    startTime: z.string().regex(/^\d{2}:\d{2}$/, { error: "Enter a valid start time." }),
+    endTime: z.string().regex(/^\d{2}:\d{2}$/, { error: "Enter a valid end time." }),
+    slotMinutes: z.coerce.number().int().min(5, { error: "Slots must be at least 5 minutes." }).max(240),
+  })
+  .refine((data) => data.startTime < data.endTime, {
+    error: "End time must be after start time.",
+    path: ["endTime"],
+  });
