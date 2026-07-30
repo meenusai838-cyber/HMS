@@ -5,7 +5,7 @@ import { getDoctorQueueToday } from "@/lib/queue";
 import { RoleShell } from "@/components/role-shell";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { DOCTOR_NAV } from "@/app/_nav";
 import { completeAction } from "../front-desk/queue/actions";
 
@@ -53,11 +53,12 @@ export default async function DoctorPage() {
                     </Link>
                   </span>
                   <div className="flex gap-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      render={<Link href={`/doctor/consultations/${a.id}`}>Open consultation</Link>}
-                    />
+                    <Link
+                      href={`/doctor/consultations/${a.id}`}
+                      className={buttonVariants({ size: "sm", variant: "outline" })}
+                    >
+                      Open consultation
+                    </Link>
                     <form action={completeAction}>
                       <input type="hidden" name="appointmentId" value={a.id} />
                       <Button size="sm" type="submit">
@@ -90,10 +91,12 @@ export default async function DoctorPage() {
                   {a.isEmergency && <Badge variant="destructive" className="ml-2">Emergency</Badge>}
                   {a.isWalkIn && <Badge variant="secondary" className="ml-2">Walk-in</Badge>}
                 </span>
-                <Button
-                  size="sm"
-                  render={<Link href={`/doctor/consultations/${a.id}`}>Start consultation</Link>}
-                />
+                <Link
+                  href={`/doctor/consultations/${a.id}`}
+                  className={buttonVariants({ size: "sm" })}
+                >
+                  Start consultation
+                </Link>
               </div>
             ))}
           </CardContent>

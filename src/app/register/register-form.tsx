@@ -3,10 +3,11 @@
 import { useActionState, useState } from "react";
 import Link from "next/link";
 import { registerAction, type RegisterState } from "./actions";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 export function RegisterForm() {
   const [state, action, pending] = useActionState<RegisterState, FormData>(registerAction, undefined);
@@ -37,11 +38,12 @@ export function RegisterForm() {
               </p>
             </div>
             <div className="flex gap-2">
-              <Button
-                variant="outline"
-                className="flex-1"
-                render={<Link href="/login">Go to sign in</Link>}
-              />
+              <Link
+                href="/login"
+                className={cn(buttonVariants({ variant: "outline" }), "flex-1")}
+              >
+                Go to sign in
+              </Link>
               <Button variant="secondary" className="flex-1" onClick={() => setConfirmNew(true)}>
                 This is a different person
               </Button>
